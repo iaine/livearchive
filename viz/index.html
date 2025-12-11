@@ -59,6 +59,8 @@ const svg = d3.select("#my_dataviz")
 let y;
 let x;
 
+var xAxis;
+var yAxis;
 
 // Parse the Data
 d3.csv("dates.csv").then( function(data) {
@@ -69,7 +71,7 @@ x = d3.scaleBand()
   .domain(data.map(d => d.date))
   .padding(0.2);
 
-svg.append("g")
+xAxis = svg.append("g")
   .attr("transform", `translate(0, ${height})`)
   .call(d3.axisBottom(x))
   .selectAll("text")
@@ -84,7 +86,7 @@ svg.append("g")
 y = d3.scaleLinear()
   .domain([0, 30])
   .range([ height, 0]);
-svg.append("g")
+yAxis = svg.append("g")
   .call(d3.axisLeft(y))
   .selectAll("text")
     .style("font-size", 12)
@@ -132,20 +134,20 @@ document.getElementById('updateBtn').addEventListener('click', () => {
         }
     }
 
-    y.domain([0, 30]);
-    console.log(data);
-    svg.selectAll("rect")
-        .data(data)
-        .transition()
-        .duration(1000)
-        .attr("y", d => y(d))
-        .attr("height", d => 1);
-        //.attr("height", d => height - margin.bottom - y(d));
+    var u = svg.selectAll("rect")
+      .data(data)
 
-    svg.select(".y-axis")
-        .transition()
-        .duration(1000)
-        .call(y.scale(y));
+      u
+      .enter()
+      .append("rect")
+      .merge(u)
+      .transition()
+      .duration(1000)
+        .attr("x", function(d) { return x(d.group); })
+        .attr("y", function(d) { return y(d[selectedVar]); })
+        .attr("width", x.bandwidth())
+        .attr("height", d => d.event)
+        .attr("fill", "#69b3a2")
 });
 
 document.getElementById('updateSndBtn').addEventListener('click', () => {
@@ -172,19 +174,20 @@ document.getElementById('updateSndBtn').addEventListener('click', () => {
         }
     }
 
-    y.domain([0, 30]);
+    var u = svg.selectAll("rect")
+      .data(data)
 
-    svg.selectAll("rect")
-        .data(data)
-        .transition()
-        .duration(1000)
-        .attr("y", d => y(d))
-        .attr("height", d => 10);
-
-    svg.select(".y-axis")
-        .transition()
-        .duration(1000)
-        .call(yAxis.scale(y));
+      u
+      .enter()
+      .append("rect")
+      .merge(u)
+      .transition()
+      .duration(1000)
+        .attr("x", function(d) { return x(d.group); })
+        .attr("y", function(d) { return y(d[selectedVar]); })
+        .attr("width", x.bandwidth())
+        .attr("height", d => d.event)
+        .attr("fill", "#69b3a2")
 });
 </script>
 
