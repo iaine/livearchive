@@ -35,7 +35,6 @@ d3.csv("dates.csv").then( function(data) {
     return new Date(d.date); 
   }))
   .range([0, width]);
-  console.log(x);
 
   svg.append("g")
       .attr("transform", `translate(0, ${height})`)
