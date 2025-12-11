@@ -131,7 +131,7 @@ document.getElementById('updateBtn').addEventListener('click', () => {
                 }
             });
 
-            for (let [key, value] of Object.entries(yourobject)) {
+            for (let [key, value] of Object.entries(_data)) {
                 data.append({"date":key, "event":value});
             }
             console.log(data);
