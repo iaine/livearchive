@@ -113,6 +113,7 @@ document.getElementById('updateBtn').addEventListener('click', () => {
     const text = e.options[e.selectedIndex].text;
     console.log(text);
 
+    let _data = {};
     let data = {};
     async function getData() {
         const url = "dates.json";
@@ -126,9 +127,13 @@ document.getElementById('updateBtn').addEventListener('click', () => {
             console.log(result);
             result.forEach(element => {
                 if (element['microphone'].includes(text)) { 
-                    data[element["date"]] = (data[element["date"]] || 0) + 1;
+                    _data[element["date"]] = (_data[element["date"]] || 0) + 1;
                 }
             });
+
+            for (let [key, value] of Object.entries(yourobject)) {
+                data.append({"date":key, "event":value});
+            }
             console.log(data);
 
 var u = svg.selectAll("rect")
@@ -140,8 +145,8 @@ var u = svg.selectAll("rect")
       .merge(u)
       .transition()
       .duration(1000)
-        .attr("x", function(d) { return x(d.group); })
-        .attr("y", function(d) { return y(d[selectedVar]); })
+        .attr("x", function(d) { return x(d.date); })
+        .attr("y", function(d) { return y(d.event); })
         .attr("width", x.bandwidth())
         .attr("height", d => d.event)
         .attr("fill", "#69b3a2")
