@@ -26,7 +26,7 @@ p {
   <option value="Church Audio">Church Audio</option>
   <option value="Canon">Canon</option>
 </select>
-<button id="updateBtn">Select Sound</button>
+<button id="updateBtn">Select Microphone</button>
 
 <p>Sound</p>
 <select id="sound">
@@ -127,7 +127,7 @@ document.getElementById('updateBtn').addEventListener('click', () => {
         }
     }
 
-    yScale.domain([0, d3.max(data)]);
+    y.domain([0, d3.max(data)]);
     console.log(data);
     svg.selectAll("rect")
         .data(data)
@@ -166,14 +166,14 @@ document.getElementById('updateSndBtn').addEventListener('click', () => {
         }
     }
 
-    yScale.domain([0, d3.max(data)]);
+    y.domain([0, d3.max(data)]);
 
     svg.selectAll("rect")
         .data(data)
         .transition()
         .duration(1000)
-        .attr("y", d => yScale(d))
-        .attr("height", d => height - margin.bottom - yScale(d));
+        .attr("y", d => y(d))
+        .attr("height", d => height - margin.bottom - y(d));
 
     svg.select(".y-axis")
         .transition()
