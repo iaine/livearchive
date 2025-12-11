@@ -122,7 +122,9 @@ document.getElementById('updateBtn').addEventListener('click', () => {
             const result = await response.json();
             console.log(result);
             result.array.forEach(element => {
-                if (element['microphone'].includes("")) { data[element["date"]] += 1}
+                if (element['microphone'].includes(text)) { 
+                    data[element["date"]] += 1
+                }
             });
             
         } catch (error) {
@@ -143,7 +145,7 @@ document.getElementById('updateBtn').addEventListener('click', () => {
     svg.select(".y-axis")
         .transition()
         .duration(1000)
-        .call(yAxis.scale(y));
+        .call(y.scale(y));
 });
 
 document.getElementById('updateSndBtn').addEventListener('click', () => {
