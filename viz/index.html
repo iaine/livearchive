@@ -58,6 +58,7 @@ d3.csv("dates.csv").then( function(data) {
       .call(d3.axisLeft(y));
 
   // append the bar rectangles to the svg element
+  console.log(bins);
   svg.selectAll("rect")
       .data(bins)
       .join("rect")
