@@ -42,7 +42,7 @@ d3.csv("dates.csv").then( function(data) {
 
   // set the parameters for the histogram
   const histogram = d3.histogram()
-      .value(function(d) { console.log(d); return d.event; })   // I need to give the vector of value
+      .value(function(d) { return d.event; })   // I need to give the vector of value
       .domain(x.domain())  // then the domain of the graphic
       .thresholds(x.ticks(120)); // then the numbers of bins
 
