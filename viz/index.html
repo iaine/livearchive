@@ -61,7 +61,7 @@ const svg = d3.select("#my_dataviz")
 d3.csv("dates.csv").then( function(data) {
 
 // X axis
-const x = d3.scaleBand()
+let x = d3.scaleBand()
   .range([ 0, width ])
   .domain(data.map(d => d.date))
   .padding(0.2);
@@ -78,7 +78,7 @@ svg.append("g")
 
 
 // Add Y axis
-const y = d3.scaleLinear()
+let y = d3.scaleLinear()
   .domain([0, 30])
   .range([ height, 0]);
 svg.append("g")
