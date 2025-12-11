@@ -24,6 +24,8 @@ const svg = d3.select("#my_dataviz")
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
     .attr("transform", `translate(${margin.left},${margin.top})`);
+    
+ svg.selectAll(".x.axis *").style({"stroke":"red"});
 
 // Parse the Data
 d3.csv("dates.csv").then( function(data) {
