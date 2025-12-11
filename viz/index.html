@@ -111,10 +111,9 @@ document.getElementById('updateBtn').addEventListener('click', () => {
     const e = document.getElementById("microphone");
     const value = e.value;
     const text = e.options[e.selectedIndex].text;
-    console.log("Hello");
     console.log(text);
 
-    let data = Object();
+    let data = {};
     async function getData() {
         const url = "data.json";
         try {
@@ -135,6 +134,8 @@ document.getElementById('updateBtn').addEventListener('click', () => {
             console.error(error.message);
         }
     }
+    getData();
+    console.log(data);
 
     var u = svg.selectAll("rect")
       .data(data)
