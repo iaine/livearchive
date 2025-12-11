@@ -111,6 +111,8 @@ document.getElementById('updateBtn').addEventListener('click', () => {
     const e = document.getElementById("microphone");
     const value = e.value;
     const text = e.options[e.selectedIndex].text;
+    console.log("Hello");
+    console.log(text);
 
     let data = Object();
     async function getData() {
