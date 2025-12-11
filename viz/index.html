@@ -129,6 +129,7 @@ document.getElementById('updateBtn').addEventListener('click', () => {
                     data[element["date"]] += 1
                 }
             });
+            console.log(data);
 
 var u = svg.selectAll("rect")
       .data(data)
@@ -150,7 +151,6 @@ var u = svg.selectAll("rect")
         }
     }
     getData();
-    console.log(data);
 
     
 });
