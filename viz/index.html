@@ -51,8 +51,8 @@ svg.selectAll("mybar")
     .attr("x", d => x(d.date))
     .attr("y", d => y(d.event))
     .attr("width", 2) //x.bandwidth()
-    .attr("height", d => d.event)
-    .attr("fill", "#69b3a2")
+    .attr("height", d => d.event < 0 ? yScale(d.event) - yScale(0): yScale(0) - yScale(d.event))
+    .attr("fill", "#f8f8ff")
 
 })
 </script>
