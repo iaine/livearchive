@@ -133,7 +133,7 @@ document.getElementById('updateBtn').addEventListener('click', () => {
                 data.push({"date":key, "event":value});
             }
 
-            d3.selectAll("svg > *").remove();
+            //d3.selectAll("svg > *").remove();
 
             var u = svg.selectAll("rect")
                 .data(data)
@@ -185,7 +185,7 @@ document.getElementById('updateSndBtn').addEventListener('click', () => {
                 data.push({"date":key, "event":value});
             }
 
-            d3.selectAll("svg > *").remove();
+            //d3.selectAll("svg > *").remove();
 
             var u = svg.selectAll("rect")
                 .data(data)
