@@ -50,7 +50,7 @@ svg.selectAll("mybar")
   .join("rect")
     .attr("x", d => x(d.date))
     .attr("y", d => y(d.event))
-    .attr("width", 20) //x.bandwidth()
+    .attr("width", 2) //x.bandwidth()
     .attr("height", d => d.event)
     .attr("fill", "#69b3a2")
 
