@@ -169,7 +169,7 @@ document.getElementById('updateSndBtn').addEventListener('click', () => {
 
             const result = await response.json();
             console.log(result);
-            result.array.forEach(element => {
+            result.forEach(element => {
                 if (element['microphone'].includes("")) { data[element["date"]] += 1}
             });
         } catch (error) {
