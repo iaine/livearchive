@@ -137,7 +137,8 @@ document.getElementById('updateBtn').addEventListener('click', () => {
         .transition()
         .duration(1000)
         .attr("y", d => y(d))
-        .attr("height", d => height - margin.bottom - y(d));
+        .attr("height", d => 1);
+        //.attr("height", d => height - margin.bottom - y(d));
 
     svg.select(".y-axis")
         .transition()
@@ -169,19 +170,19 @@ document.getElementById('updateSndBtn').addEventListener('click', () => {
         }
     }
 
-    y.domain([0, d3.max(data)]);
+    y.domain([0, 30]);
 
     svg.selectAll("rect")
         .data(data)
         .transition()
         .duration(1000)
         .attr("y", d => y(d))
-        .attr("height", d => height - margin.bottom - y(d));
+        .attr("height", d => 10);
 
     svg.select(".y-axis")
         .transition()
         .duration(1000)
-        .call(yAxis.scale(yScale));
+        .call(yAxis.scale(y));
 });
 </script>
 
