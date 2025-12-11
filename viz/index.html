@@ -17,7 +17,26 @@ p {
 </head>
 <body>
 <p>NIN Catalogue prototype</p>
-<button id="updateBtn">Update Data</button>
+<p>Microphone</p>
+<select id="microphone">
+  <option value="CA">CA</option>
+  <option value="Schoeps">Schoeps</option>
+  <option value="Dynamic Audio Binaurals">Dynamic Audio</option>
+  <option value="Core Sound">Core Sound </option>
+  <option value="Church Audio">Church Audio</option>
+  <option value="Canon">Canon</option>
+</select>
+<button id="updateBtn">Select Sound</button>
+
+<p>Sound</p>
+<select id="sound">
+  <option value="binaural">binaural</option>
+  <option value="stereo" >stereo</option>
+  <option value="cardoid">cardoid/option>
+</select>
+<button id="updateSndBtn">Select Sound</button>
+
+
 
 <!-- Create a div where the graph will take place -->
 <div id="my_dataviz"></div>
@@ -84,7 +103,72 @@ svg.selectAll("mybar")
 })
 
 document.getElementById('updateBtn').addEventListener('click', () => {
-    const newData = Array.from({ length: data.length }, () => Math.floor(Math.random() * 100));
+    const e = document.getElementById("microphone");
+    const value = e.value;
+    const text = e.options[e.selectedIndex].text;
+
+    let data = Object();
+    async function getData() {
+        const url = "data.json";
+        try {
+            const response = await fetch(url);
+            if (!response.ok) {
+             throw new Error(`Response status: ${response.status}`);
+            }
+
+            const result = await response.json();
+            console.log(result);
+            result.array.forEach(element => {
+                if (element['microphone'].includes("")) { data[element["date"]] += 1}
+            });
+            
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
+
+    //const newData = Array.from({ length: data.length }, () => Math.floor(Math.random() * 100));
+
+    yScale.domain([0, d3.max(newData)]);
+    console.log(data);
+    svg.selectAll("rect")
+        .data(data)
+        .transition()
+        .duration(1000)
+        .attr("y", d => yScale(d))
+        .attr("height", d => height - margin.bottom - yScale(d));
+
+    svg.select(".y-axis")
+        .transition()
+        .duration(1000)
+        .call(yAxis.scale(yScale));
+});
+
+document.getElementById('updateSndBtn').addEventListener('click', () => {
+    const e = document.getElementById("sound");
+    const value = e.value;
+    const text = e.options[e.selectedIndex].text;
+
+    let data = Object();
+    async function getData() {
+        const url = "data.json";
+        try {
+            const response = await fetch(url);
+            if (!response.ok) {
+             throw new Error(`Response status: ${response.status}`);
+            }
+
+            const result = await response.json();
+            console.log(result);
+            result.array.forEach(element => {
+                if (element['microphone'].includes("")) { data[element["date"]] += 1}
+            });
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
+
+    //const newData = Array.from({ length: data.length }, () => Math.floor(Math.random() * 100));
 
     yScale.domain([0, d3.max(newData)]);
 
