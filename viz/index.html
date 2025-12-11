@@ -127,9 +127,7 @@ document.getElementById('updateBtn').addEventListener('click', () => {
         }
     }
 
-    //const newData = Array.from({ length: data.length }, () => Math.floor(Math.random() * 100));
-
-    yScale.domain([0, d3.max(newData)]);
+    yScale.domain([0, d3.max(data)]);
     console.log(data);
     svg.selectAll("rect")
         .data(data)
@@ -168,12 +166,10 @@ document.getElementById('updateSndBtn').addEventListener('click', () => {
         }
     }
 
-    //const newData = Array.from({ length: data.length }, () => Math.floor(Math.random() * 100));
-
-    yScale.domain([0, d3.max(newData)]);
+    yScale.domain([0, d3.max(data)]);
 
     svg.selectAll("rect")
-        .data(newData)
+        .data(data)
         .transition()
         .duration(1000)
         .attr("y", d => yScale(d))
