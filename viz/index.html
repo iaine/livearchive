@@ -115,7 +115,7 @@ document.getElementById('updateBtn').addEventListener('click', () => {
 
     let data = {};
     async function getData() {
-        const url = "data.json";
+        const url = "dates.json";
         try {
             const response = await fetch(url);
             if (!response.ok) {
@@ -160,7 +160,7 @@ document.getElementById('updateSndBtn').addEventListener('click', () => {
 
     let data = Object();
     async function getData() {
-        const url = "data.json";
+        const url = "dates.json";
         try {
             const response = await fetch(url);
             if (!response.ok) {
