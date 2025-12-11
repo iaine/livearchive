@@ -129,15 +129,8 @@ document.getElementById('updateBtn').addEventListener('click', () => {
                     data[element["date"]] += 1
                 }
             });
-            
-        } catch (error) {
-            console.error(error.message);
-        }
-    }
-    getData();
-    console.log(data);
 
-    var u = svg.selectAll("rect")
+var u = svg.selectAll("rect")
       .data(data)
 
       u
@@ -151,6 +144,15 @@ document.getElementById('updateBtn').addEventListener('click', () => {
         .attr("width", x.bandwidth())
         .attr("height", d => d.event)
         .attr("fill", "#69b3a2")
+            
+        } catch (error) {
+            console.error(error.message);
+        }
+    }
+    getData();
+    console.log(data);
+
+    
 });
 
 document.getElementById('updateSndBtn').addEventListener('click', () => {
