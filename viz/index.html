@@ -1,12 +1,21 @@
 <!DOCTYPE html>
+<html>
+<head>
 <meta charset="utf-8">
 
 <!-- Load d3.js -->
 <script src="https://d3js.org/d3.v6.js"></script>
-<style> body {
+<style> 
+body {
     background-color: black;
-}</style>
-
+}
+p {
+    color: antiquewhite;
+}
+</style>
+</head>
+<body>
+<p>NIN Catalogue prototype</p>
 <!-- Create a div where the graph will take place -->
 <div id="my_dataviz"></div>
 
@@ -73,3 +82,7 @@ svg.selectAll("mybar")
 
 svg.selectAll(".x.axis line, .x.axis path").style({"stroke":"red"});
 </script>
+
+</body>
+
+</html>
