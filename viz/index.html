@@ -124,7 +124,7 @@ document.getElementById('updateBtn').addEventListener('click', () => {
 
             const result = await response.json();
             console.log(result);
-            result.array.forEach(element => {
+            result.forEach(element => {
                 if (element['microphone'].includes(text)) { 
                     data[element["date"]] += 1
                 }
