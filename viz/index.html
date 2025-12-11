@@ -28,7 +28,7 @@ d3.csv("dates.csv").then( function(data) {
 // X axis
 const x = d3.scaleBand()
   .range([ 0, width ])
-  .domain(data.map(d => d.Country))
+  .domain(data.map(d => d.date))
   .padding(0.2);
 svg.append("g")
   .attr("transform", `translate(0, ${height})`)
@@ -51,7 +51,7 @@ svg.selectAll("mybar")
     .attr("x", d => x(d.date))
     .attr("y", d => y(d.event))
     .attr("width", x.bandwidth())
-    .attr("height", d => height - y(d.event))
+    .attr("height", d => d.event)
     .attr("fill", "#69b3a2")
 
 })
