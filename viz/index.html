@@ -135,7 +135,7 @@ document.getElementById('updateBtn').addEventListener('click', () => {
 
             //d3.selectAll("svg > *").remove();
 
-            var u = svg.selectAll("rect")
+            var u = svg.selectAll("rect").remove()
                 .data(data)
 
                 u
