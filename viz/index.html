@@ -44,6 +44,11 @@
 <div id="my_dataviz"></div>
 
 <script> 
+let y;
+let x;
+
+var xAxis;
+var yAxis;
 var svg;
 function initialgraph() {
     // set the dimensions and margins of the graph
@@ -59,11 +64,7 @@ function initialgraph() {
     .append("g")
         .attr("transform", `translate(${margin.left},${margin.top})`);
 
-    let y;
-    let x;
 
-    var xAxis;
-    var yAxis;
 
     // Parse the Data
     d3.csv("dates.csv").then( function(data) {
