@@ -32,7 +32,7 @@ p {
 <select id="sound">
   <option value="binaural">binaural</option>
   <option value="stereo" >stereo</option>
-  <option value="cardoid">cardoid/option>
+  <option value="cardoid">cardoid</option>
 </select>
 <button id="updateSndBtn">Select Sound</button>
 
@@ -133,8 +133,6 @@ document.getElementById('updateBtn').addEventListener('click', () => {
                 data.push({"date":key, "event":value});
             }
 
-            //d3.selectAll("svg > rect").remove();
-
             var u = svg.selectAll("rect").attr("opacity", .4)
                 .data(data)
 
@@ -146,7 +144,7 @@ document.getElementById('updateBtn').addEventListener('click', () => {
                 .duration(1000)
                     .attr("x", function(d) { return x(d.date); })
                     .attr("y", function(d) { return y(d.event); })
-                    .attr("width", x.bandwidth())
+                    .attr("width", 2) //x.bandwidth()
                     .attr("height", d => d.event)
                     .attr("fill", "#69b3a2")
                     .attr("opacity", 1)
@@ -186,9 +184,7 @@ document.getElementById('updateSndBtn').addEventListener('click', () => {
                 data.push({"date":key, "event":value});
             }
 
-            //d3.selectAll("svg > *").remove();
-
-            var u = svg.selectAll("rect")
+            var u = svg.selectAll("rect").attr("opacity",.4)
                 .data(data)
 
                 u
