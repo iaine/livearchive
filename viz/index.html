@@ -56,6 +56,10 @@ function initialgraph() {
         width = 1380 - margin.left - margin.right,
         height = 400 - margin.top - margin.bottom;
 
+    if (svg) {
+        svg.selectAll('svg').remove();
+    }
+    
     // append the svg object to the body of the page
     svg = d3.select("#my_dataviz")
     .append("svg")
