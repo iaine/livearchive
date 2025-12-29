@@ -18,7 +18,7 @@
 </head>
 <body>
 <p>NIN Catalogue prototype</p>
-<button id="resetBtn">Reset Graph</button>
+<!--<button id="resetBtn">Reset Graph</button>-->
 <p>Microphone</p>
 <select id="microphone">
   <option value="CA">CA</option>
@@ -55,10 +55,6 @@ function initialgraph() {
     const margin = {top: 30, right: 30, bottom: 70, left: 60},
         width = 1380 - margin.left - margin.right,
         height = 400 - margin.top - margin.bottom;
-
-    if (svg != undefined) {
-        svg.selectAll('svg').remove();
-    }
 
     // append the svg object to the body of the page
     svg = d3.select("#my_dataviz")
@@ -119,6 +115,7 @@ function initialgraph() {
 initialgraph();
 
 document.getElementById('resetBtn').addEventListener('click', () => {
+    d3.selectAll("svg > *").remove();
     initialgraph();
 });
 
