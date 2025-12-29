@@ -1,8 +1,9 @@
 from rdflib import Graph
+import json
 
 g = Graph()
 
-g.parse('nin.n3')
+g.parse('../nin.n3')
 
 link_nin = """
 SELECT DISTINCT ?taper ?tour
@@ -67,6 +68,25 @@ WHERE { \
 ORDER BY ?year ?month"""
 
 qres = g.query(nin)
-with open("viz/dates.csv", "w") as fh:
-    for row in qres:
-        fh.write(f"{row.year}-{row.month}, {row.event}\n")
+#with open("../viz/dates.csv", "w") as fh:
+#    for row in qres:
+#        fh.write(f"{row.year}-{row.month},{int(row.event.strip())}\n")
+
+nin1 = """ SELECT ?year ?month ?micro ?lineage
+WHERE { 
+    ?a ns1:year ?year .
+    ?a ns1:month ?month .
+    ?a ns1:microphone ?d .
+    ?d ns1:microphonename ?micro .
+    OPTIONAL { ?a ns1:lineage ?lineage }.
+} 
+ORDER BY ?year ?month"""
+
+qres = g.query(nin1)
+
+rows = []
+for row in qres:
+    rows.append({"date": f"{row.year}-{row.month}", "microphone":f"{row.micro}","audio":f"{row.lineage}"})
+
+with open("../viz/dates.json", "w") as outfile:
+    json.dump(rows,outfile)
