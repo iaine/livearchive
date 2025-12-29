@@ -115,7 +115,7 @@ function initialgraph() {
 initialgraph();
 
 document.getElementById('resetBtn').addEventListener('click', () => {
-    d3.selectAll("svg > *").remove();
+    d3.selectAll("#my_dataviz > *").remove();
     initialgraph();
 });
 
