@@ -14,29 +14,36 @@
     p {
         color: antiquewhite;
     }
+    #optionscontainer {
+        width: 100%;
+    }
     </style>
 </head>
 <body>
+    
 <p>NIN Catalogue prototype</p>
-<button id="resetBtn">Reset Graph</button>
-<p>Microphone</p>
-<select id="microphone">
-  <option value="CA">CA</option>
-  <option value="Schoeps">Schoeps</option>
-  <option value="Dynamic Audio Binaurals">Dynamic Audio</option>
-  <option value="Core Sound">Core Sound </option>
-  <option value="Church Audio">Church Audio</option>
-  <option value="Canon">Canon</option>
-</select>
-<button id="updateBtn">Select Microphone</button>
+<div class="optionscontainer">
+    <div class="options"><button id="resetBtn">Reset Graph</button></div>
+    <div class="options"><p>Microphone</p>
+    <select id="microphone">
+    <option value="CA">CA</option>
+    <option value="Schoeps">Schoeps</option>
+    <option value="Dynamic Audio Binaurals">Dynamic Audio</option>
+    <option value="Core Sound">Core Sound </option>
+    <option value="Church Audio">Church Audio</option>
+    <option value="Canon">Canon</option>
+    </select>
+    <button id="updateBtn">Select Microphone</button></div>
 
-<p>Sound</p>
-<select id="sound">
-  <option value="binaural">binaural</option>
-  <option value="stereo" >stereo</option>
-  <option value="cardoid">cardoid</option>
-</select>
-<button id="updateSndBtn">Select Sound</button>
+    <div class="options"></div><p>Sound</p>
+    <select id="sound">
+    <option value="binaural">binaural</option>
+    <option value="stereo" >stereo</option>
+    <option value="cardoid">cardoid</option>
+    </select>
+    <button id="updateSndBtn">Select Sound</button>
+    </div>
+</div>
 
 
 
